@@ -16,6 +16,6 @@
     </div>
     <div class="card-hover">
         <h3 class="h3 text-uppercase">Hotel Title</h3>
-        <a class="btn btn-light btn--round card-hover__view" href="/travel/hotelRooms.php">VIEW</a>
+        <a class="btn btn-light btn--round card-hover__view" href="/hotel-rooms">VIEW</a>
     </div>
 </div>

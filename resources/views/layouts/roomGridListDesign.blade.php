@@ -1,6 +1,6 @@
 <div class="product bg-white js-grid-item">
     <div class="product__special bg-primary text-white">special price
-    </div><a class="product__img-top d-block" href="/travel/roomDetail.php"><img class="img-fluid" src="{{ asset('images/hotels/item-15.jpg') }}" alt="#"/></a>
+    </div><a class="product__img-top d-block" href="/room-detail"><img class="img-fluid" src="{{ asset('images/hotels/item-15.jpg') }}" alt="#"/></a>
     <div class="product__body">
         <h4 class="product__title"><a href="hotel.html">Outstanding Room</a></h4>
         <div class="product__rating mb-2">

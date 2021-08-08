@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('pages.home');
-});
+});*/
 
+Route::get('/', [App\Http\Controllers\HomeController::Class, 'index'])->name('home');
 
-Route::get('/hotel-rooms', [HotelController::Class, 'index']);
+Route::get('/hotel-rooms', [App\Http\Controllers\HotelController::Class, 'index'])->name('hotel-rooms');
+
+Route::get('/room-detail', [App\Http\Controllers\HotelController::Class, 'roomDetail'])->name('room-detail');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
