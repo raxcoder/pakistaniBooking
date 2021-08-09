@@ -77,17 +77,21 @@
                 <div class="tab-content">
                     <div class="tab-pane" id="accountLogin" role="tabpanel">
                         <form class="modal-account__form js-account-form" id="formLogin" action="#" method="POST" data-toggle="validator">
+
                             <div class="form-group">
-                                <input class="form-control form-control-sm" type="email" name="user_email" placeholder="E-mail address" required="required"/>
+                                <input class="form-control form-control-sm login-form-email" type="email" name="email" placeholder="E-mail address" required="required"/>
                                 <div class="help-block with-errors"></div>
                             </div>
+
                             <div class="form-group">
-                                <input class="form-control form-control-sm" type="password" name="user_pass" placeholder="Password" data-minlength="6" required="required"/>
+                                <input class="form-control form-control-sm login-form-password" type="password" name="password" placeholder="Password" data-minlength="6" required="required"/>
                                 <div class="help-block">Your password must be at least 6 characters long</div>
                             </div>
+
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <button class="btn btn-secondary btn--round mr-2 mb-2" type="submit">sign in
-                                </button>
+
+                                <button type="button" class="btn btn-secondary btn--round mr-2 mb-2 login-form-button  " type="submit">sign in</button>
+
                                 <p class="mb-2 display-none"><a class="js-toggle-account" href="#" data-account="forgot">Forgot your password?</a></p>
                             </div>
                             <div class="d-inline-block my-2 w-100 display-none ">
@@ -109,19 +113,25 @@
                     <div class="tab-pane active show" id="accountRegist" role="tabpanel">
                         <form class="modal-account__form js-account-form" id="formRegist" action="#" method="POST" data-toggle="validator">
                             <div class="form-group">
-                                <input class="form-control form-control-sm" type="text" name="user_name" placeholder="First Name" required="required"/>
+                                <input class="form-control form-control-sm" type="text" name="name" placeholder="Name" required="required"/>
                                 <div class="help-block">Please enter your name</div>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control form-control-sm" type="text" name="user_last_name" placeholder="Last Name" required="required"/>
-                                <div class="help-block">Please enter your last name</div>
-                            </div>
+
                             <div class="form-group">
                                 <input class="form-control form-control-sm" type="email" name="user_email" placeholder="E-mail address" required="required"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input class="form-control form-control-sm" id="userPass" type="password" name="user_pass" placeholder="Password" data-minlength="6" required="required"/>
+                                <input class="form-control form-control-sm" data-inputmask="'mask': '0399-9999999'" name="phone" value="" placeholder="03XX-XXXXXXX" required=""  type="text" maxlength="12" required/>
+                                <div class="help-block">Please enter your phone</div>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control form-control-sm" name="address" value="" placeholder="Address (optional)"  type="text" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control form-control-sm" id="userPass" type="password" name="password" placeholder="Password" data-minlength="8" required="required"/>
                                 <div class="help-block">Your password must be at least 6 characters long</div>
                             </div>
                             <div class="form-group">
@@ -135,7 +145,7 @@
                                 <div class="help-block">Please accept our policy</div>
                             </div>
                             <p class="mb-4 d-flex justify-content-center justify-content-sm-start">
-                                <button class="btn btn-secondary btn--round" type="submit">Create Account</button>
+                                <button class="btn btn-secondary btn--round registerBtn" type="button">Create Account</button>
                             </p>
                             <div class="d-inline-block my-2 w-100 display-none">
                                 <div class="social-sign">
@@ -236,7 +246,104 @@
 <script src="{{ asset('js/script.min.js') }}"></script>
 <script src="{{ asset('js/demo-switcher.js') }}"></script>
 
+
+<script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
+
+<script>
+    $(":input").inputmask();
+</script>
+
+
+<script>
+
+    $(document).ready(function() {
+        $("body").on("click", ".login-form-button", function(event)
+        {
+            var emailVal = $(".login-form-email").val();
+            var password = $(".login-form-password").val();
+
+            var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (!expr.test(emailVal))
+            {
+                event.preventDefault();
+
+                console.log('inavlid email');
+
+                $('.emailError').text('Please enter valid email.');
+                $('.passwordError').text('');
+
+            }
+            else
+            {
+                if(password.length > "5")
+                {
+                    // Ajax Code
+                    var path = "/login";
+
+                    alert(path);
+
+                    $.ajax(
+                    {
+                        type: 'POST',
+                        url: path,
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            email : emailVal,
+                            productOwner : password
+                        },
+                        success: function (result)
+                        {
+
+
+                            var resultMessage = result;
+
+                            /*if(resultMessage != "")
+                            {
+                                $("#msg-input").val('');
+
+                                $('ul.chat').append($(''+resultMessage+'').delay(250).fadeIn(500, scrollDown));
+                                $('.start-chat-notice').hide();
+
+                                function scrollDown() {
+                                    $('.chat-panel-body').animate({scrollTop: $('.chat-panel-body').prop("scrollHeight")}, 500);
+                                }
+                            }*/
+                        }
+                    });
+                }
+                else
+                {
+                    console.log("password error");
+                }
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+
+    $(document).ready(function(){
+
+        $("body").on("click", ".registerBtn", function(){
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
 </body>
 
 <!-- Mirrored from netgon.ru/themeforest/yourtravelworld_html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 May 2021 09:10:57 GMT -->
 </html>
+
+
+
+

@@ -22,6 +22,12 @@ Route::get('/', [App\Http\Controllers\HomeController::Class, 'index'])->name('ho
 Route::get('/hotel-rooms', [App\Http\Controllers\HotelController::Class, 'index'])->name('hotel-rooms');
 
 Route::get('/room-detail', [App\Http\Controllers\HotelController::Class, 'roomDetail'])->name('room-detail');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/add/countries', [App\Http\Controllers\CountryController::Class, 'create'])->name('countries');
+Route::get('/add/cities', [App\Http\Controllers\CityController::Class, 'create'])->name('cities');
