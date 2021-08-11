@@ -8,6 +8,7 @@
     <meta name="description" content="Looking for something amazing?">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="True">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Pakistani Booking</title>
     <!-- Edge and IE-->
     <meta name="msapplication-tap-highlight" content="no">
@@ -107,14 +108,10 @@
                         </div>
                     </div>
                     <div class="tab-pane active show" id="accountRegist" role="tabpanel">
-                        <form class="modal-account__form js-account-form" id="formRegist" action="#" method="POST" data-toggle="validator">
+                        <form class="modal-account__form js-account-forms" id="formRegist" action="#" method="POST" data-toggle="validator">
                             <div class="form-group">
                                 <input class="form-control form-control-sm" type="text" name="user_name" placeholder="First Name" required="required"/>
                                 <div class="help-block">Please enter your name</div>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control form-control-sm" type="text" name="user_last_name" placeholder="Last Name" required="required"/>
-                                <div class="help-block">Please enter your last name</div>
                             </div>
                             <div class="form-group">
                                 <input class="form-control form-control-sm" type="email" name="user_email" placeholder="E-mail address" required="required"/>
@@ -134,9 +131,11 @@
                                 </label>
                                 <div class="help-block">Please accept our policy</div>
                             </div>
+
                             <p class="mb-4 d-flex justify-content-center justify-content-sm-start">
-                                <button class="btn btn-secondary btn--round" type="submit">Create Account</button>
+                                <button class="btn btn-secondary btn--round" type="btn" id="registerSubmitBtn" >Create Account</button>
                             </p>
+
                             <div class="d-inline-block my-2 w-100 display-none">
                                 <div class="social-sign">
                                     <div class="divider divider-horizontal">
@@ -236,7 +235,32 @@
 <script src="{{ asset('js/script.min.js') }}"></script>
 <script src="{{ asset('js/demo-switcher.js') }}"></script>
 
-</body>
 
+<script>
+    /*$(document).ready(function()
+    {
+        alert("I am alert");
+        $("body").on("click", "#registerSubmitBtn", function(e)
+        {
+            e.preventDefault();
+            var formData = new FormData();
+            console.log(formData);
+            /!*var other_data = $('#frmlogin').serializeArray();
+            $.each(other_data,function(key,input){
+                formData.append(input.name,input.value);
+            }); *!/
+        });
+    });*/
+</script>
+
+
+
+
+</body>
 <!-- Mirrored from netgon.ru/themeforest/yourtravelworld_html/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 26 May 2021 09:10:57 GMT -->
 </html>
+
+
+
+
+

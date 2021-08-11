@@ -377,7 +377,7 @@
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="card-intro d-block" style="background-image: url(img/hotels/item-2.jpg);">
+                                <div class="card-intro d-block" style="background-image: url({{ asset('images/hotels/item-2.jpg') }});">
                                     <div class="card-price"><span class="mr-1">from</span><span class="count text-secondary">300$</span></div>
                                     <div class="card-intro__footer">
                                         <h4 class="h4 f-primary">Black Pearl</h4>

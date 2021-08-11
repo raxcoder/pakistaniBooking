@@ -6,7 +6,7 @@
                 <div class="row justify-content-center justify-content-between">
 
                     <div class="col-12 col-md col-lg-3 d-flex justify-content-center justify-content-md-start">
-                        <a class="navbar-logo d-inline-flex align-items-center" href="/travel/index.php">
+                        <a class="navbar-logo d-inline-flex align-items-center" href="/">
                             <img class="img-fluid mr-3" src="{{ asset('images/logo.png') }}" alt="#"/>
                             <h4 class="m-0">Pakistani Booking</h4>
                         </a>
@@ -73,16 +73,28 @@
                 </div>
                 <ul class="main-nav__list nav d-flex" id="navMenu">
 
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="/travel/index.php"><span>Home</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="/"><span>Home</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="hotel.html"><span>Hotel</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="/hotels"><span>Hotels</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="#"><span>Cities</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="/about-us"><span>about us</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="about.html"><span>about us</span></a>
+                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="/contact-us"><span>contacts</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-uppercase" href="contacts.html"><span>contacts</span></a>
+                    <li class="nav-item dropdown "><a class="nav-link fw-bold text-uppercase" href="#"><span>Cities</span><i class="caret fa fa-angle-down ml-2"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item dropdown"><a class="nav-link" href="#"><span>Multan</span><i class="caret fa fa-angle-down ml-2"></i></a>
+                            </li>
+                            <li class="nav-item dropdown"><a class="nav-link" href="#"><span>Lahore</span><i class="caret fa fa-angle-down ml-2"></i></a>
+                            </li>
+                            <li class="nav-item dropdown"><a class="nav-link" href="#"><span>Bahawalpur</span><i class="caret fa fa-angle-down ml-2"></i></a>
+                            </li>
+                        </ul>
                     </li>
+
+
+
+
 
                     <li class="nav-item display-none"><a class="nav-link fw-bold text-uppercase" href="flights.html"><span>flights</span></a>
                     </li>
